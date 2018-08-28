@@ -1,0 +1,8 @@
+const express = require('express')
+const app = express()
+const fs = require('fs')
+
+app.use(express.static('./test/'))
+app.use('/html-contents.js', express.static('./html-contents.js'))
+
+app.listen(3000, () => console.log('App listening on 3000'))
