@@ -8,18 +8,26 @@
 
 const htmlContents = function(toc, options) {
   options = Object.assign({}, {
-    top: 2,
-    bottom: 6,
-    addIds: true,
-    addLinks: true
+    top: 2,           // biggest header to include in outline - default H2
+    bottom: 3,        // smallest header to include in outline - default H3
+    addIds: true,     // addIds - yes by default to H* that don't have them
+    addLinks: true,   // addLinks - 
+    listType: 'u',    // 'u' or 'o' - (u)nordered or (o)rdered list type
+    filter: false     // CSS style selector to exclude from outline
   }, options)
 
   //shared functions
   const getLevel = function(str) {
     return parseInt(str.replace(/[a-z,A-Z]/g,''))
   }
-  const listItem = function(el) {
-    return '<li>' + el.textContent + '</li>'
+  //create listitem html
+  const listItem = function(el, level) {
+    let li = '<li data-level="' + level + '">'
+    if (options.addLinks) li += '<a href="#' + el.id + '">'
+    li += el.textContent
+    if (options.addLinks) li += '</a>'
+    li += '</li>'
+    return li
   }
 
   //toc of contents - remove # if necessary
@@ -32,7 +40,19 @@ const htmlContents = function(toc, options) {
   }
 
   //select all levels
-  let headers = document.querySelectorAll(lvls.join(','))
+  let hs = document.querySelectorAll(lvls.join(','))
+  let headers
+
+  //if filter?
+  if (options.filter) {
+    console.log(options.filter)
+    let arr = Array.prototype.slice.call(hs)
+    headers = arr.filter(function(el) {
+      return !el.matches(options.filter)
+    })
+  } else {
+    headers = Array.prototype.slice.call(hs)
+  }
 
   //add ids if necessary
   if (options.addIds) {
@@ -56,20 +76,22 @@ const htmlContents = function(toc, options) {
 
   //make list
   //current level
-  let currentLevel = options.top
-  let html = '<ul>'
+  let prevLevel = options.top
+  let html = '<' + options.listType + 'l>'
   headers.forEach(function(h) {
-    let l = getLevel(h.tagName)
+    let currentLevel = getLevel(h.tagName)
+    let li = listItem(h, currentLevel)
     //if we're still at level
-    if (currentLevel === l) {
-      html += listItem(h)
-    } else if (currentLevel > l) {
+    if (currentLevel === prevLevel) {
+      html += li
+    } else if (currentLevel < prevLevel) {
       //if we've gone back up
-      html += '</ul>' + listItem(h)
+      html += ('</' + options.listType + 'l>').repeat(prevLevel - currentLevel) + li
     } else {
       //we've gone down
-      html += '<ul>' + listItem(h)
+      html += '<' + options.listType + 'l>' + li
     }
+    prevLevel = currentLevel
   })
   TOC.insertAdjacentHTML('beforeend', html)
   
