@@ -27,6 +27,7 @@ And call like this.
 ```html
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
+  // #toc is the DOM element to put the outline in
   htmlContents('#toc')
 })
 </script>
@@ -47,3 +48,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   })
 })
 ```
+
+## Example
+
+You can run `gulp` and `localhost:3000` to see a working example (it's also in `test/index.html`)
+
