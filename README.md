@@ -2,7 +2,7 @@
 
 Vanilla JS. No dependencies.
 
-@psalmody. https://michaeltallino.us/
+[@psalmody](https://twitter.com/psalmody) | https://michaeltallino.us/
 
 ## Installation
 
