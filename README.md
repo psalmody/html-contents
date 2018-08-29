@@ -1,10 +1,10 @@
 # HTML-Contents
 
-Vanilla JS. No dependencies.
+Creates a table of contents in a DOM element optionally linked to with anchors. No dependencies.
 
 [@psalmody](https://twitter.com/psalmody) | https://michaeltallino.us/
 
-## Installation
+## Get It
 
 We're on npm:
 
@@ -14,7 +14,7 @@ npm i html-contents
 
 Download from GitHub: https://github.com/psalmody/html-contents
 
-## Usage
+## Use It
 
 No jQuery needed. Just include this script:
 
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 ```
 
-## Example
+## See It
 
 You can run `gulp` and `localhost:3000` to see a working example (it's also in `test/index.html`)
 
