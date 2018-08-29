@@ -10,7 +10,7 @@ gulp.task('server', () => {
   //development
   process.env.PORT = 3000
   process.env.NODE_ENV = 'development'
-  nodemon({
+  return nodemon({
     ignore: ['gulpfile.js'],
     script: 'bin/www'
   }) 
@@ -18,7 +18,7 @@ gulp.task('server', () => {
 
 gulp.task('watch', () => {
   livereload.listen()
-  gulp.watch(['test/**/*.*', 'html-contents.js'], {cwd: './'}, ['livereload'])
+  return gulp.watch(['test/**/*.*', 'html-contents.js'], gulp.parallel('livereload'))
 })
 
-gulp.task('default', ['server', 'watch'])
+gulp.task('default', gulp.parallel('server', 'watch'))
