@@ -61,8 +61,8 @@ const htmlContents = function(toc, options) {
     headers.forEach(function(el) {
       //if it has an id already, just add that to the array
       if (el.id) return ids.push(el.id)
-      //id will be the textcontent without spaces or numbers in lower case
-      let id = el.textContent.replace(/\s|[0-9]/g, '').toLowerCase()
+      //id will be the textcontent without letter characters in lower case
+      let id = el.textContent.replace(/[^A-Z,a-z]/g, '').toLowerCase()
       while(ids.indexOf(id) !== -1) {
         //add zs to the end until we have a unique id
         id = id + 'z'
