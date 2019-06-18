@@ -2,7 +2,7 @@
 
 Creates a table of contents in a DOM element optionally linked to with anchors. No dependencies.
 
-[@psalmody](https://twitter.com/psalmody) | https://michaeltallino.us/
+[@psalmody](https://twitter.com/psalmody)
 
 ## Get It
 
