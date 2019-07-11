@@ -45,7 +45,6 @@ const htmlContents = function(toc, options) {
 
   //if filter?
   if (options.filter) {
-    console.log(options.filter)
     let arr = Array.prototype.slice.call(hs)
     headers = arr.filter(function(el) {
       return !el.matches(options.filter)
@@ -61,8 +60,8 @@ const htmlContents = function(toc, options) {
     headers.forEach(function(el) {
       //if it has an id already, just add that to the array
       if (el.id) return ids.push(el.id)
-      //id will be the textcontent without letter characters in lower case
-      let id = el.textContent.replace(/[^A-Z,a-z]/g, '').toLowerCase()
+      //id will be the textcontent without non-letter characters in lower case
+      let id = el.textContent.replace(/[^a-zA-Z]/g, '').toLowerCase() + 'Header'
       while(ids.indexOf(id) !== -1) {
         //add zs to the end until we have a unique id
         id = id + 'z'
