@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     addIds: true,   // true/false: add ids to H* that don't have them
     addLinks: true, //true/false: add links to outline? 
     listType: 'u',  // 'u' or 'o': (u)nordered or (o)rdered list type
-    filter: false   // String: CSS style selector to exclude from outline
+    filter: false   // String or function: CSS style selector to exclude from outline
+                    //   or function to filter to pass to Array.filter
   })
 })
 ```

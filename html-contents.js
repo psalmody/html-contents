@@ -44,7 +44,10 @@ const htmlContents = function(toc, options) {
   let headers
 
   //if filter?
-  if (options.filter) {
+  if (options.filter instanceof Function) {
+    let arr = Array.prototype.slice.call(hs)
+    headers = arr.filter(options.filter)
+  } else if (options.filter instanceof String) {
     let arr = Array.prototype.slice.call(hs)
     headers = arr.filter(function(el) {
       return !el.matches(options.filter)

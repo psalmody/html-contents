@@ -305,7 +305,9 @@
       htmlContents('#toc', {
         bottom: 5,
         listType: 'o',
-        filter: '.noOutline'
+        filter: function(arr) {
+          return !arr.matches('.noOutline')
+        }
       })
     })
   </script>

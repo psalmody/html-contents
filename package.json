@@ -1,6 +1,6 @@
 {
   "name": "html-contents",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Creates HTML and accessible table of contents inside DOM element. Links to header elements. Customizable levels.",
   "main": "html-contents.js",
   "scripts": {
