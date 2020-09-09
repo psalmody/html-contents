@@ -28,5 +28,8 @@
     "gulp-livereload": "^4.0.2",
     "gulp-nodemon": "^2.5.0",
     "gulp-watch": "^5.0.1"
+  },
+  "dependencies": {
+    "yargs-parser": "^20.0.0"
   }
 }
