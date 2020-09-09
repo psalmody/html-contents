@@ -31,7 +31,7 @@ const htmlContents = function(toc, options) {
   }
 
   //toc of contents - remove # if necessary
-  let TOC = document.getElementById(toc.replace(/\#/g, ''))
+  let TOCS = document.querySelectorAll(toc)
 
   //get levels in between top and bottom - make query string
   let lvls = []
@@ -95,6 +95,10 @@ const htmlContents = function(toc, options) {
     }
     prevLevel = currentLevel
   })
-  TOC.insertAdjacentHTML('beforeend', html)
+
+  // insert in multiple places if that was used
+  for (var i = 0; i < TOCS.length; i++) {
+    TOCS[i].insertAdjacentHTML('beforeend', html)
+  }
   
 }
