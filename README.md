@@ -28,6 +28,7 @@ And call like this.
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
   // #toc is the DOM element to put the outline in
+  //   this is querySelectorAll so use that how you will 
   htmlContents('#toc')
 })
 </script>
